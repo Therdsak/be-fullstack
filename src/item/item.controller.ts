@@ -2,8 +2,6 @@ import {
   Controller,
   Get,
   Post,
-  Put,
-  Delete,
   Param,
   Body,
   ParseIntPipe,
@@ -28,18 +26,5 @@ export class ItemsController {
   @Post()
   create(@Body() body: { name: string; description?: string }): Item {
     return this.itemsService.create(body.name, body.description);
-  }
-
-  @Put(':id')
-  update(
-    @Param('id', ParseIntPipe) id: number,
-    @Body() body: { name: string; description?: string },
-  ): Item {
-    return this.itemsService.update(id, body.name, body.description);
-  }
-
-  @Delete(':id')
-  remove(@Param('id', ParseIntPipe) id: number): void {
-    this.itemsService.remove(id);
   }
 }

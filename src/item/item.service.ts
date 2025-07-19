@@ -43,19 +43,4 @@ export class ItemsService {
     this.items.push(newItem);
     return newItem;
   }
-
-  update(id: number, name: string, description?: string): Item {
-    const item = this.findOne(id);
-    item.name = name;
-    item.description = description;
-    return item;
-  }
-
-  remove(id: number): void {
-    const index = this.items.findIndex(item => item.id === id);
-    if (index === -1) {
-      throw new NotFoundException(`Item with id ${id} not found`);
-    }
-    this.items.splice(index, 1);
-  }
 }
